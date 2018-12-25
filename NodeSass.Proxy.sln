@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28407.52
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NodeSass.Proxy.Web", "NodeSass.Proxy.Web\NodeSass.Proxy.Web.csproj", "{71D2EC95-2BC8-4A17-BBD6-C7AF6CC5590A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{71D2EC95-2BC8-4A17-BBD6-C7AF6CC5590A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71D2EC95-2BC8-4A17-BBD6-C7AF6CC5590A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71D2EC95-2BC8-4A17-BBD6-C7AF6CC5590A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71D2EC95-2BC8-4A17-BBD6-C7AF6CC5590A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6E1579E1-D4F1-446B-A1C5-4CCC69D5D2D8}
+	EndGlobalSection
+EndGlobal
