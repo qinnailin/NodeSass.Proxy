@@ -26,11 +26,18 @@ namespace NodeSass.Proxy.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> NodeSass(string version)
         {
-            using (WebClient web = new WebClient())
+            try
             {
-                var url = $"https://npm.taobao.org/mirrors/node-sass/{version}/";
-                var res = await web.DownloadStringTaskAsync(new Uri(url));
-                return Content(res, "text/html");
+                using (WebClient web = new WebClient())
+                {
+                    var url = $"https://npm.taobao.org/mirrors/node-sass/{version}/";
+                    var res = await web.DownloadStringTaskAsync(new Uri(url));
+                    return Content(res, "text/html");
+                }
+            }
+            catch (Exception ex)
+            {
+                return Content(ex.Message, "text/html");
             }
         }
 
@@ -38,10 +45,17 @@ namespace NodeSass.Proxy.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> NodeSass()
         {
-            using (WebClient web=new WebClient())
+            try
             {
-                var res=await web.DownloadStringTaskAsync(new Uri("https://npm.taobao.org/mirrors/node-sass/"));
-                return Content(res, "text/html");
+                using (WebClient web = new WebClient())
+                {
+                    var res = await web.DownloadStringTaskAsync(new Uri("https://npm.taobao.org/mirrors/node-sass/"));
+                    return Content(res, "text/html");
+                }
+            }
+            catch (Exception ex)
+            {
+                return Content(ex.Message, "text/html");
             }
             
         }
@@ -70,7 +84,14 @@ namespace NodeSass.Proxy.Web.Controllers
                         return Downloads(path, filename);
                     }
                 }
-                await web.DownloadFileTaskAsync(url, filePath);
+                try
+                {
+                    await web.DownloadFileTaskAsync(url, filePath);
+                }
+                catch (Exception)
+                {
+
+                }
                 return Downloads(path, filename);
             }
 
@@ -78,10 +99,17 @@ namespace NodeSass.Proxy.Web.Controllers
 
         private IActionResult Downloads(string path, string name)
         {
-            IFileProvider provider = new PhysicalFileProvider(path);
-            IFileInfo fileInfo = provider.GetFileInfo(name);
-            var readStream = fileInfo.CreateReadStream();
-            return File(readStream, "application/x-zip-compressed", name);
+            try
+            {
+                IFileProvider provider = new PhysicalFileProvider(path);
+                IFileInfo fileInfo = provider.GetFileInfo(name);
+                var readStream = fileInfo.CreateReadStream();
+                return File(readStream, "application/x-zip-compressed", name);
+            }
+            catch (Exception )
+            {
+                return null;
+            }
         }
     }
 }
